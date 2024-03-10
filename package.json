@@ -27,6 +27,6 @@
     "typescript": "^5.4.2"
   },
   "eslintConfig": {
-    "extends": ["next/core-web-vitals", "prettier"]
+    "extends": ["next/core-web-vitals","prettier"]
   }
 }
