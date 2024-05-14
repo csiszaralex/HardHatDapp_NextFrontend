@@ -10,28 +10,20 @@ export default function Counter() {
   const counterContract = new web3.eth.Contract(counterAbi, counterAddress);
   const [value, setValue] = useState<number | bigint>(0);
   const [address, setAddress] = useState('');
+  const [count, setCount] = useState(0);
 
-  const inc = counterContract.events.Increment()
-  const dec = counterContract.events.Decrement()
-
+  //BUG: Its a bug, because the useEffect is not cleaning up the event listeners.
   useEffect(() => {
-    console.log('ADD');
+    if (count === 0) {
+      console.log('ADD');
 
-    ReadContractValue();
-    connectToMetaMask();
+      ReadContractValue();
+      connectToMetaMask();
 
-
-
-    inc.on('data', (event) => ReadContractValue());
-    dec.on('data', (event) => ReadContractValue());
-    inc.subscribe()
-    return () => {
-      console.log('REMOVE');
-      inc.unsubscribe();
-      dec.unsubscribe();
-      // counterContract.events.Increment().removeAllListeners();
-      // counterContract.events.Decrement().unsubscribe();
-    };
+      counterContract.events.Increment().on('data', (event) => ReadContractValue());
+      counterContract.events.Decrement().on('data', (event) => ReadContractValue());
+      setCount(1);
+    }
   }, []);
 
   const connectToMetaMask = async () => {
