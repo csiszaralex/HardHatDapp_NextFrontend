@@ -1,9 +1,9 @@
 'use client';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/src/components/ui/button';
 import { useEffect, useState } from 'react';
 import { Web3 } from 'web3';
 import { toNumber } from 'web3-utils';
-import { counterAbi, counterAddress } from './utils/contracts';
+import { counterAbi, counterAddress } from '../utils/contracts';
 
 export default function Counter() {
   const web3 = new Web3('ws://localhost:8545');
