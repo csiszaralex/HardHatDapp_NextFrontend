@@ -3,4 +3,4 @@ import addresses from '../../../HardHatDapp_Backend/dones.json';
 
 
 export const ballotAbi = ballot.abi;
-export const ballotAddress = addresses.ballot;
+export const ballotsAddresses = addresses.ballots;
