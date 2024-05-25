@@ -1,4 +1,6 @@
-import counter from "./Counter.json";
+import ballot from '../../../HardHatDapp_Backend/artifacts/contracts/Ballot.sol/Ballot.json';
+import addresses from '../../../HardHatDapp_Backend/dones.json';
 
-export const counterAbi = counter.abi;
-export const counterAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
+
+export const ballotAbi = ballot.abi;
+export const ballotAddress = addresses.ballot;
