@@ -10,6 +10,10 @@ export default function BallotsList(props: {
     return now >= ballot.startDate && now <= ballot.endDate && !ballot.voted;
   }
 
+  function DateToString(date: Date): string {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  }
+
   return (
     <div>
       <h1 className='text-2xl text-center mb-3'>All ballots</h1>
@@ -20,7 +24,7 @@ export default function BallotsList(props: {
               {ballot.name}
             </Button>
             <p>
-              {ballot.startDate.toDateString()} - {ballot.endDate.toDateString()}
+              {DateToString(ballot.startDate)} - {DateToString(ballot.endDate)}
             </p>
           </li>
         ))}
